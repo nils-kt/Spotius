@@ -9,7 +9,7 @@ No liability is accepted for any claims, account suspensions, etc..
  */
 
 // Change the port and url here
-// Dont forget to change the spcket port and url in 'views/index.pug'
+// Dont forget to change the socket port and url in 'views/index.pug'
 const config = {
     url: 'http://127.0.0.1',
     webPort: 1359,
