@@ -1,0 +1,59 @@
+doctype html
+html(lang='en')
+    head
+        // Required meta tags
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        // Bootstrap CSS
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css', integrity='sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS', crossorigin='anonymous')
+        title Spotius
+    body
+        .container
+            .row
+                .col-9.mt-3.mb-3
+                    h1#title
+                    #lyrics
+                .col-3.mt-3.mb-3
+                    img#cover.rounded.mx-auto.d-block.img-fluid(src='')
+                    table.table.table-borderless(style='width: 100%;')
+                        tbody
+                            tr
+                                td(width='50%')
+                                    strong
+                                        i.fas.fa-eye
+                                        |  Views:
+                                td(width='50%')
+                                    span#views
+                            tr
+                                td(width='50%')
+                                    strong
+                                        i.fas.fa-pencil-alt
+                                        |  Updated:
+                                td(width='50%')
+                                    span#update
+        // Optional JavaScript
+        // jQuery first, then Popper.js, then Bootstrap JS
+        script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js', integrity='sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut', crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js', integrity='sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js', integrity='sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=', crossorigin='anonymous')
+        script(defer='', src='https://use.fontawesome.com/releases/v5.6.3/js/all.js', integrity='sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1', crossorigin='anonymous')
+        script.
+            var song = "";
+            var socket = io.connect("http://localhost:1380");
+            setInterval(function(){ socket.emit("update"); }, 1000);
+            socket.on("setSong", function (data) {
+                console.log(data);
+                if(data.id !== song) {
+                    song = data.id;
+                    $("#lyrics").html(data.text);
+                    $("#cover").attr("src",data.infos.coverURL);
+                    if(data.infos.views === undefined) {
+                        $("#views").text("Unknown");
+                    } else {
+                        $("#views").text(data.infos.views);
+                    }
+                    $("#update").text(data.infos.updated);
+                    $("#title").text(data.infos.title);
+                }
+            });
