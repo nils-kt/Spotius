@@ -43,7 +43,6 @@ html(lang='en')
             var socket = io.connect("http://localhost:1380");
             setInterval(function(){ socket.emit("update"); }, 1000);
             socket.on("setSong", function (data) {
-                console.log(data);
                 if(data.id !== song) {
                     song = data.id;
                     $("#lyrics").html(data.text);
