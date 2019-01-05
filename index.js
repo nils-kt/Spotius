@@ -125,7 +125,7 @@ function refreshSpotify() {
                                         toEdit = replaceAllBackSlash(toEdit);
                                         toEdit = toEdit.replace('\'" ', '');
                                         toEdit = toEdit.replace('\'"', '');
-                                        toEdit = toEdit.replace('Powered by Genius', '');
+                                        toEdit = toEdit.replace('Powered by Genius', 'Powered by Genius<br/><br/>');
                                         songText = toEdit;
                                     }
                                 });
