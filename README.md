@@ -2,7 +2,7 @@
 Spotify API + (unofficial) Genius.com API - Read song lyrics
 
 ## Screenshot
-![Screenshot](https://i.imgur.com/HfALaXs.png)
+![Screenshot](https://i.imgur.com/6nhlHfX.png)
 
 ## Limitation of liability
 This project only shows how to use the (unofficial) API of Genius.com in combination with the official Spotify API.  
