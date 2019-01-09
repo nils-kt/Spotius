@@ -1,5 +1,6 @@
 # Spotius
-Spotify API + (unofficial) Genius.com API - Read song lyrics
+Spotify API + (unofficial) Genius.com API - Read song lyrics  
+[![codebeat badge](https://codebeat.co/badges/00c8a279-6ef2-453c-9609-699ac44f3681)](https://codebeat.co/projects/github-com-timedotcc-spotius-master)
 
 ## Screenshot
 ![Screenshot](https://i.imgur.com/6nhlHfX.png)
